@@ -19,4 +19,4 @@
  [Notes](https://github.com/MoonlitDeath/Legacy-of-the-Duelist-notes/wiki) and [guide](https://github.com/MoonlitDeath/Link-Evolution-Editing-Guide/wiki) by MoonlitDeath
 
 ## Gallery
- ![Screenshot](https://i.imgur.com/BpVw8Wm.png)
+ ![Screenshot](https://i.imgur.com/vAJFmuv.png)
