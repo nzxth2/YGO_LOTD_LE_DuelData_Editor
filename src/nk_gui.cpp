@@ -47,7 +47,6 @@ void SetupGui(WINDOW_DATA &windowData,unsigned int initialWindowWidth, unsigned 
     seriesStrings.push_back("ZEXAL");
     seriesStrings.push_back("ARC-V");
     seriesStrings.push_back("VRAINS");
-    seriesStrings.push_back("NONE");
     
     infoString="No file loaded. Open a dueldata_X.bin file to begin.";
     
@@ -135,7 +134,7 @@ void HandleGui(FILE_DATA &fileData){
                 fileData.duelCount++;
                 selectedDuel=fileData.duelCount-1;
                 fileData.field1.push_back(fileData.field1[selectedDuel-1]+1);
-                fileData.field2.push_back(0xFFFFFFFF);
+                fileData.field2.push_back(0);
                 fileData.field3.push_back(1);
                 fileData.field4.push_back(1);
                 fileData.field5.push_back(1);
@@ -241,19 +240,12 @@ void HandleGui(FILE_DATA &fileData){
             if (fileOpen){
                 nk_layout_row_dynamic(ctx, 0, 1);
                 nk_label(ctx,std::to_string((int)(fileData.field1[selectedDuel])).c_str(),NK_TEXT_LEFT);
-                int seriesSelection=fileData.field2[selectedDuel];
-                if (seriesSelection<0 || seriesSelection >=seriesStrings.size())
-                    seriesSelection=seriesStrings.size()-1;
-                if(nk_combo_begin_label(ctx, seriesStrings[seriesSelection].c_str(),nk_vec2(111,265))){
+                if(nk_combo_begin_label(ctx, seriesStrings[fileData.field2[selectedDuel]].c_str(),nk_vec2(111,265))){
                     nk_layout_row_dynamic(ctx, 0, 1);
                     for (Long i=0; i< seriesStrings.size(); i++){
                         int selected=nk_false;
                         if (nk_selectable_label(ctx,seriesStrings[i].c_str(),NK_TEXT_LEFT,&selected)){
-                            seriesSelection=i;
-                            if (seriesSelection>=seriesStrings.size()-1)
-                                fileData.field2[selectedDuel]=0xFFFFFFFF;
-                            else
-                                fileData.field2[selectedDuel]=i;
+                            fileData.field2[selectedDuel]=i;
                             nk_combo_close(ctx);
                             
                         }

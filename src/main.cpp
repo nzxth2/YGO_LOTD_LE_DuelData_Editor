@@ -11,7 +11,7 @@ int main(void)
 	FILE_DATA fileData;
     unsigned int initialWindowWidth=1000;
     unsigned int initialWindowHeight=590;
-    SetupWindow(windowData,initialWindowWidth,initialWindowHeight,L"YGO LOTD LE Duel Data Editor v0.1");
+    SetupWindow(windowData,initialWindowWidth,initialWindowHeight,L"YGO LOTD LE Duel Data Editor v0.2");
 
     SetupGui(windowData,initialWindowWidth,initialWindowHeight);
 
